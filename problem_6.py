@@ -24,7 +24,6 @@ class XORLinkedList:
 	def __init__(self):
 		self.mem = []
 		self.first = -1
-		self.last = -1
 
 	def add(self, value):
 		if len(self.mem) == 0:
@@ -32,15 +31,19 @@ class XORLinkedList:
 			self.mem.append(element)
 
 			self.first = 0
-			self.last = 0
 		else:
-			last_elem = self.mem[self.last]
-			current_index = last_elem.next_element(self.last)
+			current_index = self.first
+			prev_index = self.first - 1
+			while True:
+				if len(self.mem) <= current_index:
+					element = Element(value, prev_index, current_index + 1)
+					self.mem.insert(current_index + 1, element)
+					return
 
-			element = Element(value, current_index - 1, current_index + 1)
-			self.mem.append(element)
-
-			self.last = current_index
+				element = self.mem[current_index]
+				next_index = element.next_element(prev_index)
+				prev_index = current_index
+				current_index = next_index
 
 	def get(self, index):
 		if self.first < 0:
