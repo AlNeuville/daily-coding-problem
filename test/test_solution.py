@@ -7,6 +7,7 @@ import src.problem_4 as problem_4
 import src.problem_5 as problem_5
 import src.problem_6 as problem_6
 import src.problem_7 as problem_7
+import src.problem_8 as problem_8
 
 
 class Problem1(unittest.TestCase):
@@ -89,3 +90,13 @@ class Problem7(unittest.TestCase):
 		message = '1234'
 
 		self.assertEqual(3, problem_7.solution(message))
+
+
+class Problem8(unittest.TestCase):
+
+	def test_solution(self):
+		tree = problem_8.Node(0, problem_8.Node(1),
+							problem_8.Node(0, problem_8.Node(1, problem_8.Node(1), problem_8.Node(1)),
+											problem_8.Node(0)))
+
+		self.assertEqual(5, problem_8.solution(tree))
