@@ -8,6 +8,7 @@ import src.problem_5 as problem_5
 import src.problem_6 as problem_6
 import src.problem_7 as problem_7
 import src.problem_8 as problem_8
+import src.problem_9 as problem_9
 
 
 class Problem1(unittest.TestCase):
@@ -100,3 +101,16 @@ class Problem8(unittest.TestCase):
 											problem_8.Node(0)))
 
 		self.assertEqual(5, problem_8.solution(tree))
+
+
+class Problem9(unittest.TestCase):
+
+	def test_solution(self):
+		integers = [2, 4, 6, 2, 5]
+
+		self.assertEqual(13, problem_9.solution(integers))
+
+	def test_solution_not_adjacent(self):
+		integers = [5, 1, 1, 5]
+
+		self.assertEqual(10, problem_9.solution(integers))
