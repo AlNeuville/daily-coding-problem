@@ -1,6 +1,7 @@
 import unittest
 
 import src.problem_1 as problem_1
+import src.problem_11 as problem_11
 import src.problem_2 as problem_2
 import src.problem_3 as problem_3
 import src.problem_4 as problem_4
@@ -97,8 +98,8 @@ class Problem8(unittest.TestCase):
 
 	def test_solution(self):
 		tree = problem_8.Node(0, problem_8.Node(1),
-							problem_8.Node(0, problem_8.Node(1, problem_8.Node(1), problem_8.Node(1)),
-											problem_8.Node(0)))
+							  problem_8.Node(0, problem_8.Node(1, problem_8.Node(1), problem_8.Node(1)),
+											 problem_8.Node(0)))
 
 		self.assertEqual(5, problem_8.solution(tree))
 
@@ -114,3 +115,16 @@ class Problem9(unittest.TestCase):
 		integers = [5, 1, 1, 5]
 
 		self.assertEqual(10, problem_9.solution(integers))
+
+
+class Problem11(unittest.TestCase):
+
+	def test_solution(self):
+		strings = ['dog', 'deer', 'deal']
+
+		self.assertEqual(['deer', 'deal'], problem_11.solution(strings, 'de'))
+
+	def test_solution_with_preprocess(self):
+		strings = ['dog', 'deer', 'deal']
+
+		self.assertEqual(['deer', 'deal'], problem_11.solution_with_preprocess(strings, 'de'))
