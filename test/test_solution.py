@@ -6,6 +6,7 @@ import src.problem_3 as problem_3
 import src.problem_4 as problem_4
 import src.problem_5 as problem_5
 import src.problem_6 as problem_6
+import src.problem_7 as problem_7
 
 
 class Problem1(unittest.TestCase):
@@ -75,3 +76,16 @@ class Problem6(unittest.TestCase):
 			xor_list.add(i)
 
 		self.assertEqual(2, xor_list.get(2).value)
+
+
+class Problem7(unittest.TestCase):
+
+	def test_solution(self):
+		message = '111'
+
+		self.assertEqual(3, problem_7.solution(message))
+
+	def test_solution_with_long_message(self):
+		message = '1234'
+
+		self.assertEqual(3, problem_7.solution(message))
