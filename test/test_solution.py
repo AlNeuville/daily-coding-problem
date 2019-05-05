@@ -1,11 +1,11 @@
 import unittest
 
-import problem_1
-import problem_2
-import problem_3
-import problem_4
-import problem_5
-import problem_6
+import src.problem_1 as problem_1
+import src.problem_2 as problem_2
+import src.problem_3 as problem_3
+import src.problem_4 as problem_4
+import src.problem_5 as problem_5
+import src.problem_6 as problem_6
 
 
 class Problem1(unittest.TestCase):
