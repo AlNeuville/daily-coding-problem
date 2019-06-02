@@ -1,17 +1,6 @@
 import unittest
 
-import src.problem_1 as problem_1
-import src.problem_11 as problem_11
-import src.problem_12 as problem_12
-import src.problem_13 as problem_13
-import src.problem_2 as problem_2
-import src.problem_3 as problem_3
-import src.problem_4 as problem_4
-import src.problem_5 as problem_5
-import src.problem_6 as problem_6
-import src.problem_7 as problem_7
-import src.problem_8 as problem_8
-import src.problem_9 as problem_9
+from problems import *
 
 
 class Problem1(unittest.TestCase):
