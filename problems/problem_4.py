@@ -8,14 +8,14 @@ For example, the input [3, 4, -1, 1] should give 2. The input [1, 2, 0] should g
 
 
 def solution(integers):
-	"""Sorting the sequence in place and search the minimal positive integer required."""
-	integers.sort()
+    """Sorting the sequence in place and search the minimal positive integer required."""
+    integers.sort()
 
-	min = integers[0]
-	for integer in integers:
-		if min > 0 and integer > min + 1:
-			return min + 1
-		else:
-			min = integer
+    min = integers[0]
+    for integer in integers:
+        if min > 0 and integer > min + 1:
+            return min + 1
+        else:
+            min = integer
 
-	return min + 1
+    return min + 1

@@ -9,72 +9,72 @@ Hint: Try preprocessing the dictionary into a more efficient data structure to s
 
 
 def solution(strings, prefix):
-	return [string for string in strings if string.startswith(prefix)]
+    return [string for string in strings if string.startswith(prefix)]
 
 
 class TrieNode:
-	def __init__(self):
-		self.children = {}
-		self.end = False
+    def __init__(self):
+        self.children = {}
+        self.end = False
 
 
 class Trie:
-	def __init__(self):
-		self.root = TrieNode()
-		self.word_list = []
+    def __init__(self):
+        self.root = TrieNode()
+        self.word_list = []
 
-	def buildTrie(self, words):
-		for word in words:
-			self.insert(word)
+    def buildTrie(self, words):
+        for word in words:
+            self.insert(word)
 
-	def insert(self, word):
-		node = self.root
+    def insert(self, word):
+        node = self.root
 
-		for letter in list(word):
-			if letter not in node.children:
-				node.children[letter] = TrieNode()
-			node = node.children[letter]
+        for letter in list(word):
+            if letter not in node.children:
+                node.children[letter] = TrieNode()
+            node = node.children[letter]
 
-		node.end = True
+        node.end = True
 
-	def get_words(self, node, word):
-		if node.end:
-			self.word_list.append(word)
+    def get_words(self, node, word):
+        if node.end:
+            self.word_list.append(word)
 
-		for letter, child in node.children.items():
-			self.get_words(child, word + letter)
+        for letter, child in node.children.items():
+            self.get_words(child, word + letter)
 
-	def prefixed_words(self, prefix):
-		node = self.root
-		not_found = False
-		temp_word = ''
+    def prefixed_words(self, prefix):
+        node = self.root
+        not_found = False
+        temp_word = ''
 
-		for letter in list(prefix):
-			if letter not in node.children:
-				not_found = True
-				break
+        for letter in list(prefix):
+            if letter not in node.children:
+                not_found = True
+                break
 
-			temp_word += letter
-			node = node.children[letter]
+            temp_word += letter
+            node = node.children[letter]
 
-		if not_found:
-			return 0
-		elif node.end and not node.children:
-			return -1
+        if not_found:
+            return 0
+        elif node.end and not node.children:
+            return -1
 
-		self.get_words(node, temp_word)
+        self.get_words(node, temp_word)
 
-		return 1
+        return 1
 
 
 def solution_with_preprocess(strings, prefix):
-	trie = Trie()
-	trie.buildTrie(strings)
+    trie = Trie()
+    trie.buildTrie(strings)
 
-	result = trie.prefixed_words(prefix)
-	if result < 0:
-		return [prefix]
-	elif result == 0:
-		return []
-	else:
-		return trie.word_list
+    result = trie.prefixed_words(prefix)
+    if result < 0:
+        return [prefix]
+    elif result == 0:
+        return []
+    else:
+        return trie.word_list

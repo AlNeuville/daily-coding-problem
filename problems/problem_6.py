@@ -9,54 +9,54 @@ pointer functions that converts between nodes and memory addresses.
 
 
 class Element:
-	def __init__(self, value, prev, next):
-		self.value = value
-		self.both = prev ^ next
+    def __init__(self, value, prev, next):
+        self.value = value
+        self.both = prev ^ next
 
-	def next_element(self, idx):
-		return self.both ^ idx
+    def next_element(self, idx):
+        return self.both ^ idx
 
-	def prev_element(self, idx):
-		return self.both ^ idx
+    def prev_element(self, idx):
+        return self.both ^ idx
 
 
 class XORLinkedList:
-	def __init__(self):
-		self.mem = []
-		self.first = -1
+    def __init__(self):
+        self.mem = []
+        self.first = -1
 
-	def add(self, value):
-		if len(self.mem) == 0:
-			element = Element(value, -1, 1)
-			self.mem.append(element)
+    def add(self, value):
+        if len(self.mem) == 0:
+            element = Element(value, -1, 1)
+            self.mem.append(element)
 
-			self.first = 0
-		else:
-			current_index = self.first
-			prev_index = self.first - 1
-			while True:
-				if len(self.mem) <= current_index:
-					element = Element(value, prev_index, current_index + 1)
-					self.mem.insert(current_index + 1, element)
-					return
+            self.first = 0
+        else:
+            current_index = self.first
+            prev_index = self.first - 1
+            while True:
+                if len(self.mem) <= current_index:
+                    element = Element(value, prev_index, current_index + 1)
+                    self.mem.insert(current_index + 1, element)
+                    return
 
-				element = self.mem[current_index]
-				next_index = element.next_element(prev_index)
-				prev_index = current_index
-				current_index = next_index
+                element = self.mem[current_index]
+                next_index = element.next_element(prev_index)
+                prev_index = current_index
+                current_index = next_index
 
-	def get(self, index):
-		if self.first < 0:
-			return None
+    def get(self, index):
+        if self.first < 0:
+            return None
 
-		current_index = self.first
-		element = self.mem[self.first]
-		prev_index = self.first - 1
-		while True:
-			if current_index == index:
-				return element
+        current_index = self.first
+        element = self.mem[self.first]
+        prev_index = self.first - 1
+        while True:
+            if current_index == index:
+                return element
 
-			next_index = element.next_element(prev_index)
-			element = self.mem[next_index]
-			prev_index = current_index
-			current_index = next_index
+            next_index = element.next_element(prev_index)
+            element = self.mem[next_index]
+            prev_index = current_index
+            current_index = next_index

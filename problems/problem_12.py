@@ -14,19 +14,20 @@ What if, instead of being able to climb 1 or 2 steps at a time, you could climb 
 integers X? For example, if X = {1, 3, 5}, you could climb 1, 3, or 5 steps at a time.
 """
 
+
 def solution(steps):
-	temp0, temp1 = 1, 2
-	for _ in range(steps - 1):
-		temp0, temp1 = temp1, temp0 + temp1
-	return temp0
+    temp0, temp1 = 1, 2
+    for _ in range(steps - 1):
+        temp0, temp1 = temp1, temp0 + temp1
+    return temp0
 
 
 def generalized_solution(steps, integers):
-	temp = [0 for _ in range(steps + 1)]
-	temp[0] = 1
+    temp = [0 for _ in range(steps + 1)]
+    temp[0] = 1
 
-	for i in range(steps + 1):
-		temp[i] += sum(temp[i - integer] for integer in integers if i - integer > 0)
-		temp[i] += 1 if i in integers else 0
+    for i in range(steps + 1):
+        temp[i] += sum(temp[i - integer] for integer in integers if i - integer > 0)
+        temp[i] += 1 if i in integers else 0
 
-	return temp[-1]
+    return temp[-1]

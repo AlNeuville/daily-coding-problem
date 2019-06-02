@@ -8,38 +8,38 @@ For example, if our input was [1, 2, 3, 4, 5], the expected output would be [120
 
 
 def solution(integers):
-	"""O(N) with division"""
+    """O(N) with division"""
 
-	total = 1
-	for integer in integers:
-		total *= integer
+    total = 1
+    for integer in integers:
+        total *= integer
 
-	results = []
-	for integer in integers:
-		results.append(total / integer)
+    results = []
+    for integer in integers:
+        results.append(total / integer)
 
-	return results
+    return results
 
 
 def solution_without_division(integers):
-	"""O(N)"""
+    """O(N)"""
 
-	before = []
-	after = []
+    before = []
+    after = []
 
-	total = 1
-	for integer in integers:
-		before.append(total)
-		total *= integer
+    total = 1
+    for integer in integers:
+        before.append(total)
+        total *= integer
 
-	total = 1
-	for integer in integers[::-1]:
-		after.append(total)
-		total *= integer
-	after.reverse()
+    total = 1
+    for integer in integers[::-1]:
+        after.append(total)
+        total *= integer
+    after.reverse()
 
-	results = []
-	for total_before, total_after in zip(before, after):
-		results.append(total_before * total_after)
+    results = []
+    for total_before, total_after in zip(before, after):
+        results.append(total_before * total_after)
 
-	return results
+    return results

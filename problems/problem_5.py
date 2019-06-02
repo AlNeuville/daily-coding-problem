@@ -14,21 +14,21 @@ Implement car and cdr.
 
 
 def cons(a, b):
-	def pair(f):
-		return f(a, b)
+    def pair(f):
+        return f(a, b)
 
-	return pair
+    return pair
 
 
 def car(f):
-	def left(a, b):
-		return a
+    def left(a, b):
+        return a
 
-	return f(left)
+    return f(left)
 
 
 def cdr(f):
-	def right(a, b):
-		return b
+    def right(a, b):
+        return b
 
-	return f(right)
+    return f(right)

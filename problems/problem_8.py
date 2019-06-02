@@ -16,34 +16,34 @@ For example, the following tree has 5 unival subtrees:
 
 
 class Node:
-	def __init__(self, value, left=None, right=None):
-		self.value = value
-		self.left = left
-		self.right = right
+    def __init__(self, value, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right
 
-	def is_leaf(self):
-		return self.left is None and self.right is None
+    def is_leaf(self):
+        return self.left is None and self.right is None
 
 
 def solution(tree):
-	count, _ = unival_detector(tree)
-	return count
+    count, _ = unival_detector(tree)
+    return count
 
 
 def unival_detector(root):
-	if root is None:
-		return 0, True
+    if root is None:
+        return 0, True
 
-	left_count, is_left_unival = unival_detector(root.left)
-	right_count, is_right_unival = unival_detector(root.right)
-	total_count = right_count + left_count
+    left_count, is_left_unival = unival_detector(root.left)
+    right_count, is_right_unival = unival_detector(root.right)
+    total_count = right_count + left_count
 
-	if not is_left_unival or not is_right_unival:
-		return total_count, False
+    if not is_left_unival or not is_right_unival:
+        return total_count, False
 
-	if root.left is not None and root.left.value != root.value:
-		return total_count, False
-	if root.right is not None and root.right.value != root.value:
-		return total_count, False
+    if root.left is not None and root.left.value != root.value:
+        return total_count, False
+    if root.right is not None and root.right.value != root.value:
+        return total_count, False
 
-	return 1 + total_count, True
+    return 1 + total_count, True

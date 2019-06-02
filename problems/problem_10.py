@@ -8,5 +8,5 @@ from decimal import Decimal
 
 
 def schedule(f, milli):
-	sleep_time = Decimal(milli) / 1000
-	sched.scheduler(time.time, time.sleep).enterabs(sleep_time, 1, f)
+    sleep_time = Decimal(milli) / 1000
+    sched.scheduler(time.time, time.sleep).enterabs(sleep_time, 1, f)
